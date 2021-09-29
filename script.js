@@ -1,13 +1,15 @@
-const textSpan = document.querySelector(".text");
-const txt = `Lorem ipsum dolor sit amet, consectetur
- adipiscing elit. Phasellus luctus dolor a ultrices 
- elementum. Donec quis diam tincidunt, malesuada purus 
- Praesent purus ipsum, bibendum eu nisl vel, rhoncus. 
- Aliquam mattis massa non magna convallis fermentum. `
+const textSpan = document.querySelector(".text"),
+cursor = document.querySelector(".cursor"),
+txt = `Lorem ipsum dolor sit amet`
 
  
 
 let letter = 0;
+
+blinkingCursor = () => {
+    cursor.classList.toggle("dissapear");
+
+}
 
 
 
@@ -16,6 +18,9 @@ let letter = 0;
      textSpan.textContent += txt[letter];
      console.log(txt[letter])
      letter++;
-     if (indexSet == txt.length) clearInterval(indexSet)
+     if (letter == txt.length) {
+         clearInterval(indexSet)
+         setInterval(blinkingCursor, 1000);
+        }
  }
  const indexSet = setInterval(addLetter, 50);
